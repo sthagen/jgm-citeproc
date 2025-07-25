@@ -93,12 +93,19 @@ A citation is structured like this:
 
 ``` json
 { "citationID": "foo",
+  "citationResetPosition": false,
   "citationItems": [ ...list of citationItems... ],
   "citationNoteNumber": 3 }
 ```
 
-Only `citationItems` is necessary.  Alternatively,
-instead of
+Only `citationItems` is necessary.
+
+`citationResetPosition` controls whether position information
+is to be reset before the citation is processed (which affects
+whether full citations or abbreviated forms are used, in some
+styles).
+
+Alternatively, instead of
 
 ``` json
 { "citationItems": [ ... ] }

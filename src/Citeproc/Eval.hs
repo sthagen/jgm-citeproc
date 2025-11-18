@@ -2639,7 +2639,7 @@ eChoose ((match, conditions, els):rest) = do
              | T.all isDigit t' -> True
              | otherwise -> False
   let isNumeric t = all isNumericChunk
-        (T.split (\c -> c == ',' || c == '-' || c == '&') t)
+        (T.split (\c -> c == ',' || c == '-' || c == '&' || c == '\x2013') t)
   let testCondition cond =
         case cond of
            HasVariable "locator" -> hasLocator

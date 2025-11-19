@@ -1685,7 +1685,10 @@ eText (TextVariable varForm v) = do
                  Just (NumVal x) -> return $ Literal
                                            $ fromText (T.pack (show x))
                  _ -> return NullOutput
-        unless (isNothing mbv) $ deleteSubstitutedVariables [v]
+        unless (isNothing mbv) $ deleteSubstitutedVariables
+             (v : if varForm == ShortForm -- see #174
+                     then [v <> "-short"]
+                     else [])
         if v == "title" && res /= NullOutput
             then do
               modify (\st -> st { stateUsedTitle = True })
@@ -2688,6 +2691,7 @@ eNumber var nform = do
                  Just (FancyVal x) -> splitNums (toText x)
                  Just (TextVal t)  -> splitNums t
                  _                 -> []
+  unless (isNothing mbv) $ deleteSubstitutedVariables [var]
   grouped <$> mapM (evalNumber nform mbGender) nparts
 
 evalNumber :: CiteprocOutput a

@@ -314,19 +314,19 @@ main = do
   putStrLn ""
   let categories = sort $ Set.toList
                         $ foldr (Set.insert . category) mempty testCases
-  putStrLn $ printf "%-30s %6s %6s %6s %6s"
+  putStrLn $ printf "%-29s %6s %6s %6s %6s"
                ("CATEGORY" :: String)
-               ("PASS" :: String)
-               ("FAIL" :: String)
-               ("ERROR" :: String)
-               ("SKIP" :: String)
+               ("  PASS" :: String)
+               ("  FAIL" :: String)
+               (" ERROR" :: String)
+               ("  SKIP" :: String)
   let resultsFor cat = do
         let p = length . filter ((== cat) . fst) . passed $ counts
         let f = length . filter ((== cat) . fst) . failed $ counts
         let e = length . filter ((== cat) . fst) . errored $ counts
         let s = length . filter ((== cat) . fst) . skipped $ counts
         let percent = (fromIntegral p / fromIntegral (p + f + e) :: Double)
-        putStrLn $ printf "%-30s %6d %6d %6d %6d    |%-20s|"
+        putStrLn $ printf "%-29s %6d %6d %6d %6d |%-20s|"
                      (T.unpack cat) p f e s
                      (replicate (floor (percent * 20.0)) '+')
   mapM_ resultsFor categories

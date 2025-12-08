@@ -1599,6 +1599,9 @@ renderOutput opts locale (Tagged (TagNames _ _ ns) x)
   -- capitalized in pandoc footnotes: see jgm/pandoc#10983
   | any hasNonstandardCase ns
   = addTextCase Nothing PreserveCase $ renderOutput opts locale x
+renderOutput opts locale (Tagged (TagItem SuppressAuthor _) x) =
+  -- removing the author can leave us with leading space:
+  dropTextWhile (== ' ') $ renderOutput opts locale x
 renderOutput opts locale (Tagged _ x) = renderOutput opts locale x
 renderOutput opts locale (Formatted f [Linked url xs])
   | linkBibliography opts

@@ -1,5 +1,14 @@
 # citeproc changelog
 
+## 0.13
+
+  * Add `citationResetPosition` field to `Citation`. [API change]
+    When this field is set, it causes the processor to forget all
+    information about past citations.  This affects processing of
+    `position`.  The intended usage is to set this for the first
+    citation of every chapter, so that "subsequent" behavior is
+    reset at chapter boundaries. See #160 for discussion.
+
 ## 0.12
 
   * Fix suppression of substituted variables for number,

@@ -1,6 +1,6 @@
 cabal-version:       2.2
 name:                citeproc
-version:             0.12
+version:             0.13
 synopsis:            Generates citations and bibliography from CSL styles.
 description:         citeproc parses CSL style files and uses them to
                      generate a list of formatted citations and bibliography
@@ -25,10 +25,6 @@ extra-source-files:  stack.yaml
                      test/csl/*.txt
                      test/extra/*.txt
                      test/overrides/*.txt
-tested-with:         GHC == 8.0.2, GHC == 8.2.2,
-                     GHC == 8.4.4, GHC == 8.6.5,
-                     GHC == 8.8.4, GHC == 8.10.7,
-                     GHC == 9.0.2, GHC == 9.2.2
 
 source-repository    head
   type:              git

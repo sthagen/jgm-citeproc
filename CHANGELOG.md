@@ -1,5 +1,12 @@
 # citeproc changelog
 
+## 0.13.0.1
+
+  * Detect terminal punctuation hidden by closing quotes (#179,
+    Andrew Dunning).
+
+  * Clarify building executable in the README (#177).
+
 ## 0.13
 
   * Add `citationResetPosition` field to `Citation`. [API change]
